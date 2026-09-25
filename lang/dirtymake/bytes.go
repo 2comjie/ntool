@@ -10,13 +10,6 @@ import "unsafe"
 // dirtmake.Bytes(n, n)   →  runtime.mallocgc(size, nil,  needzero=false)  ← 手工直调
 // 省的就是那一次全量清零（memclr）
 
-// 手工拼接切片头
-type slice struct {
-	data unsafe.Pointer
-	len  int
-	cap  int
-}
-
 //go:linkname mallocgc runtime.mallocgc
 func mallocgc(size uintptr, typ unsafe.Pointer, needzero bool) unsafe.Pointer
 
@@ -25,9 +18,6 @@ func Bytes(len, cap int) (b []byte) {
 		panic("dirtmake.Bytes: len out of range")
 	}
 	p := mallocgc(uintptr(cap), nil, false) // needzero 传入false 不清零内存
-	sh := (*slice)(unsafe.Pointer(&b))      // go的切片头
-	sh.data = p
-	sh.len = len
-	sh.cap = cap
+	b = unsafe.Slice((*byte)(p), cap)[:len]
 	return
 }
