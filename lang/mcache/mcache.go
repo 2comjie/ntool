@@ -39,7 +39,7 @@ func Malloc(size int, capacity ...int) []byte {
 }
 
 func calcIndex(size int) int {
-	if size == 0 {
+	if size <= 0 {
 		return 0
 	}
 	if isPowerOfTwo(size) {
