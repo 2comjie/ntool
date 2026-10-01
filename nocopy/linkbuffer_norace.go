@@ -14,6 +14,6 @@
 
 //go:build !race
 
-package linkbuffer
+package nocopy
 
 type LinkBuffer = UnsafeLinkBuffer

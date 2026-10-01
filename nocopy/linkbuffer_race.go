@@ -14,7 +14,7 @@
 
 //go:build race
 
-package linkbuffer
+package nocopy
 
 import (
 	"sync"

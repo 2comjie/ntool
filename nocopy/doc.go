@@ -46,4 +46,4 @@
 //     zcReader/zcWriter/ioReader/ioWriter 实现，位于原版 nocopy_readwriter.go），
 //     因为它们依赖 netpoll 内部的 Exception/ErrEOF 错误设施；
 //   - 接口定义与 `var _ Reader = &LinkBuffer{}` 断言保留在 iface.go 中。
-package linkbuffer
+package nocopy
