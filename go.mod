@@ -4,6 +4,7 @@ go 1.27.0
 
 require (
 	github.com/alicebob/miniredis/v2 v2.38.0
+	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/redis/go-redis/v9 v9.19.0
 	github.com/spf13/cast v1.10.0
 )
